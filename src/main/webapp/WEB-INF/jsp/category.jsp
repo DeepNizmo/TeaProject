@@ -10,9 +10,25 @@
 <%@ include file="include/importTags.jsp"%>
 <html>
 <head>
-    <title>Tea category</title>
+    <title>Tea categories</title>
 </head>
 <body>
+    <div class="container mx-auto mt-4">
+        <div class="row">
+            <c:forEach items="${categoryList}" var="category">
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="<spring:url value='/images/greenTeaCategory.png'/>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><c:out value="${category}"/></h5>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+
+<!--
     <div class="container mx-auto mt-4">
         <div class="row">
             <div class="col-md-4">
@@ -140,5 +156,6 @@
             </div>
         </div>
     </div>
+    -->
 </body>
 </html>
