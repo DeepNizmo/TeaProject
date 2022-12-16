@@ -45,7 +45,7 @@
                     <a class="nav-link" href="#">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Company</a>
+                    <a class="nav-link" href="company">Company</a>
                 </li>
             </ul>
         </div>
