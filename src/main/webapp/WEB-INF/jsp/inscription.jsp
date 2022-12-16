@@ -24,7 +24,7 @@
       <td><input type="text" name="first" value="" size="20"/></td>
     </tr>
     <tr>
-      <td>First name*:</td>
+      <td>First name:</td>
       <td><input type="text" name="first" value="" size="20"/></td>
     </tr>
     <tr>
@@ -32,11 +32,11 @@
       <td><input type="email" name="first" value="" size="20"/></td>
     </tr>
     <tr>
-      <td>Delivery address:</td>
+      <td>Delivery address*:</td>
       <td><input type="text" name="first" value="" size="20"/></td>
     </tr>
     <tr>
-      <td>Phone number:</td>
+      <td>Phone number*:</td>
       <td><input type="tel" name="first" value="" size="20"/></td>
     </tr>
     <tr>
