@@ -12,8 +12,8 @@
 </head>
 <body>
 <h1>The history of the company</h1>
-<p class="card-text">We sells tea.</p>
+<p >We sells tea.</p>
 <h1>Presentation of our products</h1>
-<p class="card-text">bla bla bla</p>
+<p >bla bla bla</p>
 </body>
 </html>

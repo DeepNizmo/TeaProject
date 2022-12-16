@@ -16,6 +16,7 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link  type="image/icon" rel="icon" href="<spring:url value='/images/logo.png' />" >
     <link
         type="text/css" href="<spring:url value='/css/first.css' />"
         rel="stylesheet">
@@ -42,10 +43,13 @@
                     <a class="nav-link" href="#">Caddie</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="company">Company</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="company">Company</a>
+                    <a class="nav-link" href="inscription">Inscription</a>
                 </li>
             </ul>
         </div>

@@ -6,6 +6,11 @@ body {
     background: #111 !important;
 }
 
+input {
+    display: inline-block;
+    margin: 1em;
+}
+
 .card {
     background: #222;
     border: 1px solid #dd2476;
