@@ -12,7 +12,8 @@
     <title>Inscription</title>
 </head>
 <body>
-<form name="inscritionForm" >
+<div class="container text-center">
+<form name="inscritionForm" class="form-control">
   <h2>Inscription form</h2>
   <table>
     <tr>
@@ -60,6 +61,6 @@
   </table>
   <input type="button" value="Submit">
 </form>
-
+</div>
 </body>
 </html>
