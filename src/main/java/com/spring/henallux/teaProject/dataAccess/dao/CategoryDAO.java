@@ -27,11 +27,11 @@ public class CategoryDAO implements CategoryDataAccess{
 
     @Override
     public ArrayList<String> getCategories() {
-        List<CategoryEntity> categoryEntities = categoryRepository.findAll();
+        List<CategoryEntity> categoryEntities = categoryRepository.findByLanguageId("fr"); // TODO : lier la langue des catégorie avec le choix de la langue sur la page web
         ArrayList<String> categories = new ArrayList<>();
         for (CategoryEntity categoryEntity : categoryEntities) {
             Category category = providerConverter.categoryEntityToCategoryModel(categoryEntity);
-            categories.add(category.getName());
+            categories.add(category.getTranslation());
         }
         return categories;
     }
