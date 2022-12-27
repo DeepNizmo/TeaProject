@@ -16,14 +16,16 @@
     <div class="container mx-auto mt-4">
         <div class="row">
             <c:forEach items="${categoryList}" var="category">
-                <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="<spring:url value='/images/greenTeaCategory.png'/>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"><c:out value="${category}"/></h5>
+                <a href="tea-product?category=${category}">
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="<spring:url value='/images/greenTeaCategory.png'/>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><c:out value="${category}"/></h5>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </c:forEach>
         </div>
     </div>

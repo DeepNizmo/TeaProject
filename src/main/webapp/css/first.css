@@ -6,6 +6,10 @@ body {
     background: #111 !important;
 }
 
+h1, h5, p {
+    color: rgba(250, 250, 250, 0.8);
+}
+
 tr {
     display: inline-block;
     margin: 1em;

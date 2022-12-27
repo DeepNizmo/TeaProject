@@ -54,23 +54,23 @@
             </ul>
         </div>
     </nav>
-<div>
-    <!-- **************** BANNER ***************** -->
-    <!-- <img src="<spring:url value='/images/banner.png'/>"> -->
-</div>
-<div>
-    <!-- ************** LEFT MENU **************** -->
-    …
-</div>
-<div>
-    <!-- ************* MAIN CONTENT ************* -->
     <div>
-        <tiles:insertAttribute name="main-content" />
+        <!-- **************** BANNER ***************** -->
+        <!-- <img src="<spring:url value='/images/banner.png'/>"> -->
     </div>
-</div>
-<div>
-    <!-- ****************** FOOTER ***************** -->
-    …
-</div>
+    <div>
+        <!-- ************** LEFT MENU **************** -->
+        …
+    </div>
+    <div>
+        <!-- ************* MAIN CONTENT ************* -->
+        <div class="integrated">
+            <tiles:insertAttribute name="main-content" />
+        </div>
+    </div>
+    <div>
+        <!-- ****************** FOOTER ***************** -->
+        …
+    </div>
 </body>
 </html>
