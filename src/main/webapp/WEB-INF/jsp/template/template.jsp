@@ -40,7 +40,7 @@
                     <a class="nav-link" href="tea-category">Tea  <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Caddie</a>
+                    <a class="nav-link" href="cart">Caddie</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="company">Company</a>

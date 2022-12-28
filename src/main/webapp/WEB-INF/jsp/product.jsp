@@ -23,6 +23,18 @@
                             <h5 class="card-title">${product.getName()}</h5>
                             <h6 class="card-title">${product.getCategory()}</h6>
                             <h6 class="card-title">${product.getUnitPrice()} €</h6>
+                            <form:form id="addToCart"
+                                       method="POST"
+                                       action="/teaProject/tea-product/addToCart"
+                                       modelAttribute="cartItem">
+                                <form:input path="id" type="hidden" value="${product.getId()}"/>
+                                <form:input path="name" type="hidden" value="${product.getName()}"/>
+                                <form:input path="unitPrice" type="hidden" value="${product.getUnitPrice()}"/>
+                                <form:input path="details" type="hidden" value="${product.getDetails()}"/>
+                                <form:input path="category" type="hidden" value="${product.getCategory()}"/>
+                                <form:input path="quantity" type="hidden" value="${1}"/>
+                                <form:button class="btn btn-primary">Add to cart</form:button>
+                            </form:form>
                         </div>
                     </div>
                 </div>

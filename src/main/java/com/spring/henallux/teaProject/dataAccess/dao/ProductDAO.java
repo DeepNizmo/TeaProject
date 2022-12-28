@@ -27,9 +27,7 @@ public class ProductDAO implements ProductDataAccess {
         List<ProductEntity> productEntities = productRepository.findAll();
         ArrayList<Product> products = new ArrayList<>();
         for (ProductEntity productEntity : productEntities) {
-            System.out.println(productEntity.getName());
             Product product = providerConverter.productEntityToProductModel(productEntity);
-            System.out.println(product.getName());
             products.add(product);
         }
         return products;
@@ -42,7 +40,6 @@ public class ProductDAO implements ProductDataAccess {
         for (ProductEntity productEntity : productEntities) {
             Product product = providerConverter.productEntityToProductModel(productEntity);
             products.add(product);
-            System.out.println(product.getName());
         }
         return products;
     }
