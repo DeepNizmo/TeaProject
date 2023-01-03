@@ -3,7 +3,6 @@ package com.spring.henallux.teaProject.controller;
 import com.spring.henallux.teaProject.dataAccess.dao.ProductDataAccess;
 import com.spring.henallux.teaProject.model.Cart;
 import com.spring.henallux.teaProject.model.CartItem;
-import com.spring.henallux.teaProject.service.CartService;
 import com.spring.henallux.teaProject.service.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,13 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping(value = "/cart")
 @SessionAttributes({Constants.CURRENT_CART})
 public class CartController {
-    private CartService cartService;
     private ProductDataAccess productDAO;
-
-    @Autowired
-    public CartController(CartService cartService) {
-        this.cartService = cartService;
-    }
 
     @ModelAttribute(Constants.CURRENT_CART)
     public Cart cart() {return new Cart();}
