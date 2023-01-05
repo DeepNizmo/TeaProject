@@ -5,27 +5,87 @@
   Time: 13:58
   To change this template use File | Settings | File Templates.
 --%>
+<%--
+  Created by InteltdJ IDEA.
+  User: Wangi
+  Date: 16-12-22
+  Time: 07:47
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page pageEncoding="UTF-8"
          contentType="text/html; charset=UTF-8"%>
 <%@ include file="include/importTags.jsp"%>
 <html>
 <head>
-  <title >Login</title>
+  <title style="color:white" >Inscription</title>
 </head>
 <body>
-<div class="form login" style="color:white">
-  <form:form method="post" modelAttribute="userModel" cssClass="login-form">
-    <form:label path="username">Login:</form:label>
-    <form:input path="username" cssClass="login-input" required="required" placeholder="Enter username here"/>
-    <form:errors path="username" />
-    <form:label path="password">Password</form:label>
-    <form:input type="password" cssClass="login-input" path="password" required="required" placeholder="Enter password here"/>
-    <form:errors path="password" />
-    <c:catch var="errorLogin"><div class="login-error-msg">${errorLogin}</div></c:catch>
-    <form:button>Submit</form:button>
+<div class="form registration">
+  <form:form id="form-registration" method="post" cssClass="Registration-form">
+    <h2>Inscription form</h2>
+    <table>
+      <tr>
+        <td class="label"><form:label path="username">Username:*</form:label></td>
+        <td class="input"><form:input path="username"  required="required" placeholder="Enter username here"/></td>
+        <td class="error"><form:errors path="username" /><c:catch var="userExist"><div class="login-error-msg">${userExist}</div></c:catch></td>
+      </tr>
+      <tr>
+        <td class="fr-label">   <form:label path="lastname">Lastname:*</form:label></td>
+        <td class="fr-input">   <form:input path="lastname" required="required" placeholder="Enter lastname here"/></td>
+        <td class="fr-error"> <form:errors path="lastname" /></td>
+      </tr>
+      <tr>
+        <td class="fr-label"><form:label path="firstname">Firstname:*</form:label></td>
+        <td class="fr-input">  <form:input path="firstname" required="required" placeholder="Enter firstname here"/></td>
+        <td class="fr-error">   <form:errors path="firstname" /></td>
+      </tr>
+      <tr>
+        <td class="fr-label">  <form:label path="email">Email*</form:label></td>
+        <td class="fr-input">  <form:input path="email"  required="required" placeholder="Enter your email here"/></td>
+        <td class="fr-error"> <form:errors path="email" /><c:catch var="userExist"><div class="login-error-msg">${userExist}</div></c:catch></td>
+      </tr>
+      <tr>
+        <td class="fr-label">  <form:label path="password">Password:*</form:label></td>
+        <td class="fr-input">  <form:input type="password" path="password" required="required" placeholder="Enter password here"/></td>
+        <td class="fr-error"><form:errors path="password" /></td>
+      </tr>
+      <tr>
+        <td class="fr-label">  <form:label path="confirmPassword">Confirmed password:*</form:label></td>
+        <td class="fr-input">   <form:input type="password" path="confirmPassword" required="required" placeholder="Enter confirm password here"/></td>
+        <td class="fr-error">  <form:errors path="confirmPassword" /><c:catch var="passwordDontMatch"><div class="login-error-msg">${passwordDontMatch}</div></c:catch></td>
+      </tr>
+      <tr>
+        <td class="fr-label"><form:label path="deliveryAddress">Delivery address:*</form:label></td>
+        <td class="fr-input">  <form:input path="deliveryAddress" required="required" placeholder="Enter delivery address here"/></td>
+        <td class="fr-error">   <form:errors path="deliveryAddress" /></td>
+      </tr>
+      <td class="fr-label"> <form:label path="phoneNumber">Phone number</form:label></td>
+      <td class="fr-input"><form:input type="number" path="phoneNumber" placeholder="Enter phone number here"/></td>
+      <td class="fr-error">  <form:errors path="phoneNumber" /></td>
+      </tr>
+      <tr>
+        <td class="fr-label"> <form:label path="sex">Gender:</form:label></td>
+        <td>
+          <div>
+            <input type="radio" id="male" name="drone" value="male" checked>
+            <label for="male">Male</label>
+          </div>
+          <div>
+            <input type="radio" id="female" name="drone" value="female" checked>
+            <label for="female">Female</label>
+          </div>
+          <div>
+            <input type="radio" id="x" name="drone" value="x" checked>
+            <label for="x">Genderfluid</label>
+          </div>
+        </td>
+        <td class="fr-error">  <form:errors path="sex" /></td>
+      </tr>
+      <tr > <td style="color:red">* = obtdgatory fields</td></tr>
+      </tbody>
+    </table>
+    <form:button>Sign up</form:button>
   </form:form>
-  <a href="<c:url value='/inscription' />">Sign Up</a>
-  <a href="<c:url value='/home' />">Cancel</a>
 </div>
-</body>
-</html>
+<a class="nav-tdnk" href="login">Sign in</a>
+<a class="nav-tdnk" href="home">Cancel</a>

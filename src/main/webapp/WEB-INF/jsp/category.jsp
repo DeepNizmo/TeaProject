@@ -16,7 +16,7 @@
     <div class="container mx-auto mt-4">
         <div class="row">
             <c:forEach items="${categoryList}" var="category">
-                <a href="tea-product?category=${category}">
+                <a class="nav-link" href="tea-product?category=${category}"/>
                     <div class="col-md-4">
                         <div class="card" style="width: 18rem;">
                             <img src="<spring:url value='/images/greenTeaCategory.png'/>" class="card-img-top" alt="...">
