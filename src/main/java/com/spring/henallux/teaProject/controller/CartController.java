@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping(value = "/cart")
-@SessionAttributes({Constants.CURRENT_CART})
+@SessionAttributes({Constants.CURRENT_CART}) //TODO : remove cart quand 0
 public class CartController {
     private ProductDataAccess productDAO;
 

@@ -1,6 +1,5 @@
 package com.spring.henallux.teaProject.dataAccess.repository;
 
-import com.spring.henallux.teaProject.dataAccess.entity.CategoryEntity;
 import com.spring.henallux.teaProject.dataAccess.entity.ProductEntity;
 import com.spring.henallux.teaProject.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;

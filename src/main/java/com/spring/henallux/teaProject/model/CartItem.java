@@ -7,6 +7,7 @@ public class CartItem {
     private String details;
     private String category;
     private Integer quantity;
+    private Double reducedPrice;
 
     public CartItem() {
     }
@@ -59,4 +60,11 @@ public class CartItem {
         this.quantity = quantity;
     }
 
+    public Double getReducedPrice() {
+        return reducedPrice;
+    }
+
+    public void setReducedPrice(Double reducedPrice) {
+        this.reducedPrice = reducedPrice;
+    }
 }

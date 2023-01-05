@@ -6,6 +6,7 @@ public class Product {
     private Double unitPrice;
     private String details;
     private String category;
+    private Double reducedPrice;
 
     public Product() {
     }
@@ -48,5 +49,13 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Double getReducedPrice() {
+        return reducedPrice;
+    }
+
+    public void setReducedPrice(Double reducedPrice) {
+        this.reducedPrice = reducedPrice;
     }
 }

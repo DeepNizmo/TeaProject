@@ -27,7 +27,7 @@ public class CategoryDAO implements CategoryDataAccess{
 
     @Override
     public ArrayList<String> getCategories() /*(String language)*/ {
-        List<CategoryEntity> categoryEntities = categoryRepository.findByLanguageId("en"); // TODO : lier la langue des catégorie avec le choix de la langue sur la page web
+        List<CategoryEntity> categoryEntities = categoryRepository.findByLanguageId("en"); // TODO : lier la langue des catégorie avec le choix de la langue sur la page web + regler path pour les catégopries traduites
         ArrayList<String> categories = new ArrayList<>();
         for (CategoryEntity categoryEntity : categoryEntities) {
             Category category = providerConverter.categoryEntityToCategoryModel(categoryEntity);
