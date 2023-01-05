@@ -5,7 +5,7 @@ import javax.validation.constraints.*;
 public class User {
     @NotNull
     @Size(min=4, max=20)
-    private String login;
+    private String username;
     @NotNull
     @Size(min=6, max=30)
     private String password;
@@ -20,18 +20,18 @@ public class User {
     @NotNull
     @Size(min=1, max=500)
     private String deliveryAddress;
- /*   @NotNull
-    @Min(value = 1000)
-    @Max(value = 99999)
-    private Integer postcode;
-    @NotNull
-    @Size(min=3, max=100)
-    private String street;
-    @NotNull
-    @Size(min = 3, max = 50)
-    private String city;
-    @NotNull
-    private String country;*/
+    /*   @NotNull
+       @Min(value = 1000)
+       @Max(value = 99999)
+       private Integer postcode;
+       @NotNull
+       @Size(min=3, max=100)
+       private String street;
+       @NotNull
+       @Size(min = 3, max = 50)
+       private String city;
+       @NotNull
+       private String country;*/
     @NotNull
     @Email
     private String email;
@@ -40,8 +40,8 @@ public class User {
     private String phoneNumber = null;
     private String sex;
 
-    public User(String login, String password,String confirmPassword,String lastName,String firstName,String deliveryAddress,String email,String phoneNumber,String sex) {
-        this.login=login;
+    public User(String username, String password,String confirmPassword,String lastName,String firstName,String deliveryAddress,String email,String phoneNumber,String sex) {
+        this.username=username;
         this.password=password;
         this.lastName=lastName;
         this.firstName=firstName;
@@ -54,12 +54,12 @@ public class User {
     public User() {
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

@@ -39,4 +39,10 @@ public class ProductController {
         return "redirect:/tea-product?category=" + categoryId;
     }
 
+    @RequestMapping(value = "/{productId}", method = RequestMethod.GET)
+    public String getDetailsProduct(Model model, @PathVariable("productId")int productId){
+        model.addAttribute("product", productDAO.getProduct(productId));
+        return "integrated:productDetails";
+    }
+
 }

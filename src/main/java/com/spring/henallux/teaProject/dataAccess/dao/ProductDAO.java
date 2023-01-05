@@ -71,4 +71,12 @@ public class ProductDAO implements ProductDataAccess {
 //        System.out.println("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]");
         return products;
     }
+
+    @Override
+    public Product getProduct(int idProduct) {
+        ProductEntity productEntity = productRepository.findById(idProduct);
+        if(productEntity == null) return null;
+        Product product = providerConverter.productEntityToProductModel(productEntity);
+        return product;
+    }
 }
