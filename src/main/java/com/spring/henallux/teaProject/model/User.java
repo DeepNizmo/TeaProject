@@ -118,4 +118,12 @@ public class User {
         else this.phoneNumber = phoneNumber;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
 }

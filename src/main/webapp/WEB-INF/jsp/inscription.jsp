@@ -21,7 +21,7 @@
 </head>
 <body>
 <div class="form registration">
-  <form:form id="form-registration" method="post" cssClass="Registration-form">
+  <form:form id="form-registration" method="post" modelAttribute="currentUser" cssClass="Registration-form">
     <h2>Inscription form</h2>
     <table>
       <tr>
@@ -35,9 +35,9 @@
         <td class="fr-error"> <form:errors path="lastname" /></td>
       </tr>
       <tr>
-        <td class="fr-label"><form:label path="firstname">Firstname:*</form:label></td>
-        <td class="fr-input">  <form:input path="firstname" required="required" placeholder="Enter firstname here"/></td>
-        <td class="fr-error">   <form:errors path="firstname" /></td>
+        <td class="fr-label"><form:label path="firstName">Firstname:*</form:label></td>
+        <td class="fr-input">  <form:input path="firstName" required="required" placeholder="Enter firstname here"/></td>
+        <td class="fr-error">   <form:errors path="firstName" /></td>
       </tr>
       <tr>
         <td class="fr-label">  <form:label path="email">Email*</form:label></td>

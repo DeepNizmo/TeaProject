@@ -50,7 +50,7 @@ public class ProductDAO implements ProductDataAccess {
 //            System.out.println("dans le for (produit) : " + productEntity.getId() + "\n");
 
             int iEntity = 0;
-            while (iEntity < reductionEntities.size() && !reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // tant qu'il n'a pas trouvé de réduction sur le produit
+            while (iEntity < reductionEntities.size() - 1 && !reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // tant qu'il n'a pas trouvé de réduction sur le produit
 //                System.out.println("dans la boucle : " + reductionEntities.get(iEntity).getProduct().getName() + "\n");
 //                System.out.println(reductionEntities.get(iEntity).getProduct().getId());
                 iEntity++;
@@ -63,7 +63,7 @@ public class ProductDAO implements ProductDataAccess {
 //                System.out.println("produitPromo : " + reductionEntities.get(iEntity).getProduct().getName()+ "\n");
 //                System.out.println("produit : " + productEntity.getName()+ "\n");
                 Double reducedPrice = (1 - ((double)reductionEntities.get(iEntity).getPromotion().getPercentage() / 100)) * productEntity.getUnitPrice();
-                //System.out.println("prix reduit = " + reducedPrice);
+//                System.out.println("prix reduit = " + reducedPrice);
                 product.setReducedPrice(reducedPrice);
             }
             products.add(product);
