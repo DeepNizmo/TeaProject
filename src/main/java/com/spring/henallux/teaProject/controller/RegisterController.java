@@ -17,14 +17,14 @@ import javax.validation.Valid;
 import java.util.Locale;
 
 @Controller
-@RequestMapping(value= "/inscription")
+@RequestMapping(value= "/register")
 @SessionAttributes({Constants.CURRENT_USER})
-public class InscriptionController {
+public class RegisterController {
 
     private UserService userService;
     private MessageSource messageSource;
     @Autowired
-    public InscriptionController(UserService userService,MessageSource messageSource) {
+    public RegisterController(UserService userService, MessageSource messageSource) {
         this.userService = userService;
         this.messageSource = messageSource;
     }

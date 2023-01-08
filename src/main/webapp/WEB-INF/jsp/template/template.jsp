@@ -32,7 +32,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="home">
             <img src="<spring:url value='/images/logo4.png'/>" width="35" height="35" class="d-inline-block align-top" alt="">
             TEA
         </a>

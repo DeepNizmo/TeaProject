@@ -35,15 +35,15 @@ public class ProviderConverter {
         return userEntity;
     }
 
-    public OrderLineEntity orderLineModelToOrderLineEntity(OrderLine orderLine) {
-        OrderLineEntity orderLineEntity = mapper.map(orderLine, OrderLineEntity.class);
-        return orderLineEntity;
-    }
-
-    public OrderEntity orderModelToOrderEntity(Order order) {
-        OrderEntity orderEntity = mapper.map(order, OrderEntity.class);
-        return orderEntity;
-    }
+//    public OrderLineEntity orderLineModelToOrderLineEntity(OrderLine orderLine) {
+//        OrderLineEntity orderLineEntity = mapper.map(orderLine, OrderLineEntity.class);
+//        return orderLineEntity;
+//    }
+//
+//    public OrderEntity orderModelToOrderEntity(Order order) {
+//        OrderEntity orderEntity = mapper.map(order, OrderEntity.class);
+//        return orderEntity;
+//    }
 
     public Reduction reductionEntityToReductionModel(ReductionEntity reductionEntity) {
         Reduction reduction = mapper.map(reductionEntity, Reduction.class);
