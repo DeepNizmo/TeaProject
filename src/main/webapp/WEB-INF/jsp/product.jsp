@@ -23,15 +23,10 @@
                         <div class="card-body">
                             <h5 class="card-title">${product.getName()}</h5>
                             <h6>${product.getCategory()}</h6>
-                            <c:choose>
-                                <c:when test="${product.getReducedPrice() != null}">
-                                    <h6 style="text-decoration-line: line-through">${product.getUnitPrice()} ${currency}</h6>
-                                    <h5>${product.getReducedPrice()} ${currency}</h5>
-                                </c:when>
-                                <c:otherwise>
-                                    <h6>${product.getUnitPrice()} ${currency}</h6>
-                                </c:otherwise>
-                            </c:choose>
+                            <c:if test="${product.getReducedPrice() != null}">
+                                <h6 style="text-decoration-line: line-through">${product.getUnitPrice()} ${currency}</h6>
+                            </c:if>
+                                <h5>${product.getActualPrice()} ${currency}</h5>
                             <form:form id="addToCart"
                                        method="POST"
                                        action="/teaProject/tea-product/addToCart"
@@ -42,6 +37,7 @@
                                 <form:input path="details" type="hidden" value="${product.getDetails()}"/>
                                 <form:input path="category" type="hidden" value="${product.getCategory()}"/>
                                 <form:input path="quantity" type="hidden" value="${1}"/>
+                                <form:input path="actualPrice" type="hidden" value="${product.getActualPrice()}"/>
                                 <c:if test="${product.getReducedPrice() != null}">
                                     <form:input path="reducedPrice" type="hidden" value="${product.getReducedPrice()}"/>
                                 </c:if>

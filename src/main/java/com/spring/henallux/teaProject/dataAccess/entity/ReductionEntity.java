@@ -3,7 +3,7 @@ package com.spring.henallux.teaProject.dataAccess.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Reduction")
+@Table(name = "reduction")
 public class ReductionEntity {
     @Id
     @Column(name = "id")

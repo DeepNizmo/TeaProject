@@ -3,26 +3,27 @@ package com.spring.henallux.teaProject.dataAccess.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="customer")
+@Table(name="user")
 public class UserEntity {
 
+//    @Id
+//    @Column(name="id_customer")
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)
+//    private int id;
     @Id
-    @Column(name="id_customer")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
     @Column(name="username")
     private String username;
     @Column(name="password")
     private String password;
-    @Column(name="firstname")
+    @Column(name="first_name")
     private String firstname;
-    @Column(name="lastname")
+    @Column(name="last_name")
     private String lastname;
-    @Column(name="deliveryAddress")
+    @Column(name="delivery_address")
     private String deliveryAddress;
     @Column(name="email")
     private String email;
-    @Column(name="phoneNumber")
+    @Column(name="phone")
     private String phoneNumber;
     @Column(name="sex")
     private String sex;
@@ -35,13 +36,13 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getusername() {
         return username;

@@ -8,6 +8,7 @@ public class CartItem {
     private String category;
     private Integer quantity;
     private Double reducedPrice;
+    private Double actualPrice;
 
     public CartItem() {
     }
@@ -66,5 +67,13 @@ public class CartItem {
 
     public void setReducedPrice(Double reducedPrice) {
         this.reducedPrice = reducedPrice;
+    }
+
+    public Double getActualPrice() {
+        return actualPrice;
+    }
+
+    public void setActualPrice(Double actualPrice) {
+        this.actualPrice = actualPrice;
     }
 }

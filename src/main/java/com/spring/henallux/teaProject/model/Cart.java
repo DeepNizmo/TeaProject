@@ -25,6 +25,8 @@ public class Cart {
         }
     }
 
+
+
     public void removeProduct(int productId) {
         items.remove(productId);
     }

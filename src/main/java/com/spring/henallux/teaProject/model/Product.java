@@ -11,6 +11,15 @@ public class Product {
     public Product() {
     }
 
+    public Product(Integer id, String name, Double unitPrice, String details, String category, Double reducedPrice) {
+        this.id = id;
+        this.name = name;
+        this.unitPrice = unitPrice;
+        this.details = details;
+        this.category = category;
+        this.reducedPrice = reducedPrice;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -57,5 +66,9 @@ public class Product {
 
     public void setReducedPrice(Double reducedPrice) {
         this.reducedPrice = reducedPrice;
+    }
+
+    public Double getActualPrice() {
+        return reducedPrice != null ? reducedPrice : unitPrice;
     }
 }
