@@ -19,8 +19,11 @@
     <!-- "tiles:" renders the specified page within the template-main -->
 
     <definition name="integrated:**" extends="template-main">
-
         <put-attribute name="main-content" value="/WEB-INF/jsp/{1}.jsp" />
+    </definition>
+
+    <definition name="static:**" extends="template-main">
+        <put-attribute name="main-content" value="/WEB-INF/jsp/static/{1}.jsp" />
     </definition>
 
     <definition name="error" extends="template-main">

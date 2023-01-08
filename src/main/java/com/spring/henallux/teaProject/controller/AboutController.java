@@ -5,11 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Locale;
+
 @Controller
-@RequestMapping(value="/company")
-public class CompanyController {
+@RequestMapping(value="/about")
+public class AboutController {
     @RequestMapping (method = RequestMethod.GET)
-    public String category(Model model) {
-        return "integrated:company";
+    public String aboutUs(Locale locale){
+        return locale.getLanguage().equals("fr") ? "static:aboutUsFr" : "static:aboutUsEn";
     }
 }

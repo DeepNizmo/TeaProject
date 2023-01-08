@@ -41,7 +41,7 @@
                                 <c:if test="${product.getReducedPrice() != null}">
                                     <form:input path="reducedPrice" type="hidden" value="${product.getReducedPrice()}"/>
                                 </c:if>
-                                <form:button class="btn btn-primary">Add to cart</form:button>
+                                <form:button class="btn btn-primary"><spring:message code="add_to_cart_label"/></form:button>
                             </form:form>
                         </div>
                     </div>

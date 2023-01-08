@@ -9,22 +9,22 @@
 <%@ include file="include/importTags.jsp"%>
 <html>
 <head>
-  <title >Login</title>
+  <title>Login</title>
 </head>
 <body>
 <div class="form login" style="color:white">
   <form:form method="post" modelAttribute="userModel" cssClass="login-form">
-    <form:label path="username">Login:</form:label>
+    <form:label path="username"><spring:message code="username_label"/> : </form:label>
     <form:input path="username" cssClass="login-input" required="required" placeholder="Enter username here"/>
     <form:errors path="username" />
-    <form:label path="password">Password</form:label>
+    <form:label path="password"><spring:message code="password_label"/> : </form:label>
     <form:input type="password" cssClass="login-input" path="password" required="required" placeholder="Enter password here"/>
     <form:errors path="password" />
     <c:catch var="errorLogin"><div class="login-error-msg">${errorLogin}</div></c:catch>
-    <form:button>Submit</form:button>
+    <form:button><spring:message code="login_label"/></form:button>
   </form:form>
-  <a href="<c:url value='/register' />">Sign Up</a>
-  <a href="<c:url value='/home' />">Cancel</a>
+  <a href="<c:url value='/register' />"><spring:message code="sign_up_label"/></a>
+  <a href="<c:url value='/home' />"><spring:message code="cancel_label"/></a>
 </div>
 </body>
 </html>

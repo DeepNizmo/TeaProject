@@ -37,7 +37,7 @@ public class RegisterController {
     @RequestMapping(method= RequestMethod.GET)
     public String get (Model model) {
         model.addAttribute("currentUser", user());
-        return "integrated:inscription";
+        return "integrated:register";
     }
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
@@ -51,6 +51,6 @@ public class RegisterController {
                 }
             } else model.addAttribute("passwordDontMatch",messageSource.getMessage("passwordDontMatch", new Object[0], locale));
         }
-        return "integrated:inscription";
+        return "integrated:register";
     }
 }

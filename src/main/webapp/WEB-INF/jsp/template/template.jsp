@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="company">
+                    <a class="nav-link" href="<spring:url value="/about"/>">
                         <spring:message code="navbar_aboutUs"/>
                     </a>
                 </li>
