@@ -5,7 +5,7 @@
   Time: 18:17
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../include/importTags.jsp"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
@@ -20,6 +20,15 @@
     <link
         type="text/css" href="<spring:url value='/css/first.css' />"
         rel="stylesheet">
+
+    <!-- LANGUAGES -->
+    <spring:url value="" var="LocaleFr">
+        <spring:param name="locale" value="fr" />
+    </spring:url>
+    <spring:url value="" var="LocaleEn">
+        <spring:param name="locale" value="en" />
+    </spring:url>
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -34,22 +43,45 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="home">Home</a>
+                    <a class="nav-link" href="home">
+                        <spring:message code="navbar_home"/>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="tea-category">Tea  <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="tea-category">
+                        <spring:message code="navbar_tea"/>
+                        <span class="sr-only">(current)</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart">Caddie</a>
+                    <a class="nav-link" href="cart">
+                        <spring:message code="navbar_cart"/>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="company">Company</a>
+                    <a class="nav-link" href="company">
+                        <spring:message code="navbar_aboutUs"/>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login">Login</a>
+                    <a class="nav-link" href="login">
+                        <spring:message code="navbar_login"/>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="inscription">Inscription</a>
+                    <a class="nav-link" href="register">
+                        <spring:message code="navbar_register"/>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="${LocaleFr}">
+                        <img class="flag-img" src="<spring:url value="/images/flag/fr_flag.png"/>" alt="fr flag"/>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="${LocaleEn}">
+                        <img class="flag-img" src="<spring:url value="/images/flag/uk_flag.png"/>" alt="en flag"/>
+                    </a>
                 </li>
             </ul>
         </div>

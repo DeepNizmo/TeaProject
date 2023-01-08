@@ -26,6 +26,15 @@ tr {
     width: 50px;
 }
 
+.nav-item {
+    padding: 12px;
+}
+
+.flag-img {
+    float: right;
+    width: 50px;
+}
+
 .btn {
     border: 5px solid;
     border-image-slice: 1;
