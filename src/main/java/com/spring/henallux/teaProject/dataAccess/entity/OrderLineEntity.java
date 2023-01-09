@@ -1,9 +1,6 @@
 package com.spring.henallux.teaProject.dataAccess.entity;
 
-import com.spring.henallux.teaProject.model.User;
-
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "order_line")
@@ -24,8 +21,8 @@ public class OrderLineEntity {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "order_price")
-    private Double orderPrice;
+    @Column(name = "product_price")
+    private Double productPrice;
 
     public OrderLineEntity() {
     }
@@ -62,11 +59,11 @@ public class OrderLineEntity {
         this.quantity = quantity;
     }
 
-    public Double getOrderPrice() {
-        return orderPrice;
+    public Double getProductPrice() {
+        return productPrice;
     }
 
-    public void setOrderPrice(Double orderPrice) {
-        this.orderPrice = orderPrice;
+    public void setProductPrice(Double orderPrice) {
+        this.productPrice = orderPrice;
     }
 }
