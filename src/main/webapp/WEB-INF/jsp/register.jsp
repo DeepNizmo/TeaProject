@@ -1,11 +1,4 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: Wangi
-  Date: 04-01-23
-  Time: 13:58
-  To change this template use File | Settings | File Templates.
---%>
-<%--
   Created by InteltdJ IDEA.
   User: Wangi
   Date: 16-12-22
@@ -20,7 +13,7 @@
 </head>
 <body>
 <div class="form registration">
-  <form:form id="form-registration" method="post" modelAttribute="currentUser" cssClass="Registration-form">
+  <form:form id="form-registration" method="post" modelAttribute="currentUser" action="/teaproject/register/send" cssClass="Registration-form">
     <h2><spring:message code="registration_form_label"/></h2>
     <table>
       <tr>

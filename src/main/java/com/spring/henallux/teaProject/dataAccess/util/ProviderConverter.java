@@ -27,11 +27,22 @@ public class ProviderConverter {
     }
     public User userEntityToUserModel(UserEntity userEntity) {
         User user = mapper.map(userEntity, User.class);
+        user.setAccountNonExpired(userEntity.getAccountNonExpired());
+        user.setEnabled(userEntity.getEnabled());
+        user.setCredentialsNonExpired(userEntity.getCredentialsNonExpired());
+        user.setAccountNonLocked(userEntity.getAccountNonLocked());
+        user.setAuthorities(userEntity.getAuthorities());
         return user;
     }
 
     public UserEntity userModelToUserEntity(User user) {
         UserEntity userEntity = mapper.map(user, UserEntity.class);
+        userEntity.setAccountNonExpired(user.getAccountNonExpired());
+        userEntity.setAccountNonLocked(user.getAccountNonLocked());
+        userEntity.setEnabled(user.getEnabled());
+        userEntity.setCredentialsNonExpired(user.getCredentialsNonExpired());
+        userEntity.setAuthorities(user.getAuthorities().toString());
+
         return userEntity;
     }
 

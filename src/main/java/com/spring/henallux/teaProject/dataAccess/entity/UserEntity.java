@@ -1,15 +1,12 @@
 package com.spring.henallux.teaProject.dataAccess.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name="user")
 public class UserEntity {
 
-//    @Id
-//    @Column(name="id_customer")
-//    @GeneratedValue(strategy=GenerationType.IDENTITY)
-//    private int id;
     @Id
     @Column(name="username")
     private String username;
@@ -27,6 +24,16 @@ public class UserEntity {
     private String phoneNumber;
     @Column(name="sex")
     private String sex;
+    @Column(name="authorities")
+    private String authorities;
+    @Column(name="account_non_expired")
+    private Boolean accountNonExpired;
+    @Column(name="account_non_locked")
+    private Boolean accountNonLocked;
+    @Column(name="credentials_non_expired")
+    private Boolean credentialsNonExpired;
+    @Column(name="enabled")
+    private Boolean enabled;
 
     /*
     MAPPING UNE FOIS QUE ORDERENTITY SERA CREE
@@ -104,6 +111,45 @@ public class UserEntity {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+    public String getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
+    }
+
+    public Boolean getAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public void setAccountNonExpired(Boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public Boolean getAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public Boolean getCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
 
