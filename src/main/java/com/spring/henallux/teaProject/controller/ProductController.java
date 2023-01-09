@@ -42,6 +42,7 @@ public class ProductController {
     @RequestMapping(value = "/details/{productId}", method = RequestMethod.GET)
     public String getDetailsProduct(Model model, @PathVariable("productId")int productId){
         model.addAttribute("product", productDAO.getProduct(productId));
+        model.addAttribute("cartItem", new CartItem());
         return "integrated:productDetails";
     }
 

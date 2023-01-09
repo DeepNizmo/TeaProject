@@ -63,8 +63,19 @@ public class ProductDAO implements ProductDataAccess {
     @Override
     public Product getProduct(int idProduct) {
         ProductEntity productEntity = productRepository.findById(idProduct);
+        List<ReductionEntity> reductionEntities = reductionRepository.findByPromotion_StartDateLessThanEqualAndPromotion_EndDateGreaterThanEqual(new Date(new java.util.Date().getTime()), new Date(new java.util.Date().getTime()));
+
         if(productEntity == null) return null;
         Product product = providerConverter.productEntityToProductModel(productEntity);
+
+        int iEntity = 0;
+        while (iEntity < reductionEntities.size() - 1 && !reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // tant qu'il n'a pas trouvé de réduction sur le produit
+            iEntity++;
+        }
+        if (reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // si il trouve la réduction, il calcule le prix réduit
+            Double reducedPrice = (1 - ((double)reductionEntities.get(iEntity).getPromotion().getPercentage() / 100)) * productEntity.getUnitPrice();
+            product.setReducedPrice(reducedPrice);
+        }
         return product;
     }
 }
