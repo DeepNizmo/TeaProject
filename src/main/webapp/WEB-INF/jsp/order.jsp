@@ -24,7 +24,7 @@
             <p>x${item.getQuantity()} ${item.getName()} ${item.getActualPrice()} ${currency}</p>
         </c:forEach>
         <br>
-        <h5> total : ${currentCart.getTotalPrice()} ${currency}</h5>
+        <h5><spring:message code="total_label"/> : ${currentCart.getTotalPrice()} ${currency}</h5>
         <br>
         <form:form
                 id="conformOder"

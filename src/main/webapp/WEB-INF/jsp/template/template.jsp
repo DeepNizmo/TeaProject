@@ -43,18 +43,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="home">
+                    <a class="nav-link" href="<spring:url value="/home"/>">
                         <spring:message code="navbar_home"/>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="tea-category">
+                    <a class="nav-link" href="<spring:url value="/tea-category"/>">
                         <spring:message code="navbar_tea"/>
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart">
+                    <a class="nav-link" href="<spring:url value="/cart"/>">
                         <spring:message code="navbar_cart"/>
                     </a>
                 </li>
@@ -64,12 +64,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login">
+                    <a class="nav-link" href="<spring:url value="/login"/>">
                         <spring:message code="navbar_login"/>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register">
+                    <a class="nav-link" href="<spring:url value="/register"/>">
                         <spring:message code="navbar_register"/>
                     </a>
                 </li>
