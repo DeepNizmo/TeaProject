@@ -24,10 +24,10 @@ public class ProductController {
     @ModelAttribute(Constants.CURRENT_CART)
     public Cart cart() {return new Cart();}
 
-    @RequestMapping (method = RequestMethod.GET)
-    public String home(Model model, @RequestParam(required = true, defaultValue = "black") String category, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
+    @RequestMapping (value = "/{categoryId}", method = RequestMethod.GET)
+    public String home(Model model, @PathVariable("categoryId")String categoryId, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
         model.addAttribute(Constants.CURRENT_CART, cart);
-        model.addAttribute("productsList", productDAO.getProductsByCategory(category));
+        model.addAttribute("productsList", productDAO.getProductsByCategory(categoryId));
         model.addAttribute("cartItem", new CartItem());
         return "integrated:product";
     }
@@ -36,10 +36,10 @@ public class ProductController {
     public String addToCart(Model model, @ModelAttribute(value = "cartItem") CartItem item, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
         cart.addProduct(item.getId(), item);
         String categoryId = item.getCategory();
-        return "redirect:/tea-product?category=" + categoryId;
+        return "redirect:/tea-product/" + categoryId;
     }
 
-    @RequestMapping(value = "/{productId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/details/{productId}", method = RequestMethod.GET)
     public String getDetailsProduct(Model model, @PathVariable("productId")int productId){
         model.addAttribute("product", productDAO.getProduct(productId));
         return "integrated:productDetails";

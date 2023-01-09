@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional //il faut peut être juste le mettre sur getProductsByCategory
 public class ProductDAO implements ProductDataAccess {
     private ProductRepository productRepository;
     private ProviderConverter providerConverter;
@@ -46,29 +46,17 @@ public class ProductDAO implements ProductDataAccess {
         ArrayList<Product> products = new ArrayList<>();
 
         for (ProductEntity productEntity : productEntities) { //passe en revue tout les produits
-//            System.out.println("dans le for (produit) : " + productEntity.getName() + "\n");
-//            System.out.println("dans le for (produit) : " + productEntity.getId() + "\n");
-
             int iEntity = 0;
             while (iEntity < reductionEntities.size() - 1 && !reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // tant qu'il n'a pas trouvé de réduction sur le produit
-//                System.out.println("dans la boucle : " + reductionEntities.get(iEntity).getProduct().getName() + "\n");
-//                System.out.println(reductionEntities.get(iEntity).getProduct().getId());
                 iEntity++;
             }
-//            System.out.println("taille = " + reductionEntities.size() + "\n");
-//            System.out.println("Ientity = " + iEntity + "\n");
             Product product = providerConverter.productEntityToProductModel(productEntity);
             if (reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // si il trouve la réduction, il calcule le prix réduit
-//                System.out.println("promo : " + reductionEntities.get(iEntity).getPromotion().getPercentage() + "%\n");
-//                System.out.println("produitPromo : " + reductionEntities.get(iEntity).getProduct().getName()+ "\n");
-//                System.out.println("produit : " + productEntity.getName()+ "\n");
                 Double reducedPrice = (1 - ((double)reductionEntities.get(iEntity).getPromotion().getPercentage() / 100)) * productEntity.getUnitPrice();
-//                System.out.println("prix reduit = " + reducedPrice);
                 product.setReducedPrice(reducedPrice);
             }
             products.add(product);
         }
-//        System.out.println("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]");
         return products;
     }
 
