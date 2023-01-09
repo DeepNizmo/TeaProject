@@ -53,19 +53,4 @@ public class OrderController {
         //if ok redirect payment else (si probleme queqlonque pas de co parexemple) : redirect orderError
         return "redirect:/payment";
     }
-
-    @RequestMapping (value = "/payment", method = RequestMethod.GET)
-    public String pay(Model model, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
-        model.addAttribute(Constants.CURRENT_CART, cart);
-        //payer
-        //clear cart
-        return "integrated:payment";
-    }
-
-    @RequestMapping (value = "/send", method = RequestMethod.POST)
-    public String send(Model model, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
-        model.addAttribute(Constants.CURRENT_CART, cart);
-        //si payé go paymentSuccess et isPaid True DB sinon erreur
-        return "redirect:/paymentSuccess";
-    }
 }
