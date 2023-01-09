@@ -52,7 +52,7 @@
                 </c:forEach>
                 <h5><spring:message code="total_label"/> : ${currentCart.getTotalPrice()} ${currency}</h5>
                 <br>
-                <a class="btn btn-primary" href="<spring:url value="/order"/>"><spring:message code="confirm_order_label"/></a>
+                <a class="btn btn-primary" href="<spring:url value="/order"/>"><spring:message code="order_label"/></a>
             </c:when>
             <c:otherwise>
                 <h1><spring:message code="empty_cart"/> !</h1>

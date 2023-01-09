@@ -15,12 +15,12 @@
     <div class="container mx-auto mt-4">
         <div class="row">
             <c:forEach items="${categoryList}" var="category">
-                <a class="nav-link" href="tea-product?category=${category}"/>
+                <a class="nav-link" href="tea-product?category=${category.getCategoryId()}"/>
                     <div class="col-md-4">
                         <div class="card" style="width: 18rem;">
                             <img src="<spring:url value='/images/greenTeaCategory.png'/>" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title"><c:out value="${category}"/></h5>
+                                <h5 class="card-title"><c:out value="${category.getTranslation()}"/></h5>
                             </div>
                         </div>
                     </div>

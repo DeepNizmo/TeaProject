@@ -16,9 +16,9 @@
 <body>
     <c:set var="currency" value="€"/>
     <div class="container mx-auto mt-4">
-        <h1>check if everything is correct !</h1>
+        <h1><spring:message code="confirm_order_check_message"/></h1>
         <br>
-        <h3>Products : </h3>
+        <h3><spring:message code="confirm_order_products_label"/> : </h3>
         <br>
         <c:forEach items="${currentCart.getItems().values()}" var="item">
             <p>x${item.getQuantity()} ${item.getName()} ${item.getActualPrice()} ${currency}</p>
@@ -32,8 +32,8 @@
                 action="/teaProject/order/confirmOrder"
                 modelAttribute="order">
             <form:input path="paid" type="hidden" value="${false}"/>
-            <form:button class="btn btn-primary">Confirm Order</form:button>
-            <a class="btn btn-primary" href="<spring:url value="/cart"/>">Back to cart</a>
+            <form:button class="btn btn-primary"><spring:message code="confirm_order_label"/></form:button>
+            <a class="btn btn-primary" href="<spring:url value="/cart"/>"><spring:message code="back_to_cart_label"/></a>
         </form:form>
     </div>
 </body>
