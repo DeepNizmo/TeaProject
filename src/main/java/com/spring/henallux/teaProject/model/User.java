@@ -1,8 +1,15 @@
 package com.spring.henallux.teaProject.model;
 
-import javax.validation.constraints.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-public class User {
+import javax.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public class User implements UserDetails {
     @NotNull
     @Size(min=4, max=20)
     private String username;
@@ -20,18 +27,6 @@ public class User {
     @NotNull
     @Size(min=1, max=500)
     private String deliveryAddress;
-    /*   @NotNull
-       @Min(value = 1000)
-       @Max(value = 99999)
-       private Integer postcode;
-       @NotNull
-       @Size(min=3, max=100)
-       private String street;
-       @NotNull
-       @Size(min = 3, max = 50)
-       private String city;
-       @NotNull
-       private String country;*/
     @NotNull
     @Email
     private String email;
@@ -39,7 +34,11 @@ public class User {
     @Min(value = 0, message = "The value must be positive")
     private String phoneNumber = null;
     private String sex;
-
+    private String authorities;
+    private Boolean accountNonExpired;
+    private Boolean accountNonLocked;
+    private Boolean credentialsNonExpired;
+    private Boolean enabled;
     public User(String username, String password,String confirmPassword,String lastName,String firstName,String deliveryAddress,String email,String phoneNumber,String sex) {
         this.username=username;
         this.password=password;
@@ -49,6 +48,11 @@ public class User {
         this.email=email;
         setPhoneNumber(phoneNumber);
         this.sex=sex;
+        this.authorities = authorities;
+        this.accountNonExpired = accountNonExpired;
+        this.accountNonLocked = accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.enabled = enabled;
     }
 
     public User() {
@@ -124,6 +128,77 @@ public class User {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    @Override
+    public Collection<GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+
+        if (authorities != null && !authorities.isEmpty()) {
+            String[] authoritiesAsArray = authorities.split(",");
+
+            for (String authority : authoritiesAsArray) {
+                if (authority != null && !authority.isEmpty()) {
+                    grantedAuthorities.add(new SimpleGrantedAuthority(authority));
+                }
+            }
+        }
+
+        return grantedAuthorities;
+    }
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
+    }
+
+    public Boolean getAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public void setAccountNonExpired(Boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public Boolean getAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public Boolean getCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
 }

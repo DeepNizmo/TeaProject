@@ -3,6 +3,7 @@ package com.spring.henallux.teaProject.service;
 import com.spring.henallux.teaProject.dataAccess.dao.UserDataAccess;
 import com.spring.henallux.teaProject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,6 +17,7 @@ public class UserService {
     }
 
     public User saveUser(User user) {
+        BCryptPasswordEncoder b = new BCryptPasswordEncoder();
         user.setPassword((user.getPassword()));
         return userDAO.save(user);
     }
