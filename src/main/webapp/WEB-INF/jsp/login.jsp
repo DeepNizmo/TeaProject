@@ -15,10 +15,10 @@
 <div class="form login" style="color:white">
   <form:form method="post" modelAttribute="userModel" cssClass="login-form">
     <form:label path="username"><spring:message code="username_label"/> : </form:label>
-    <form:input path="username" cssClass="login-input" required="required" placeholder="Enter username here"/>
+    <form:input path="username" cssClass="login-input" required="required" />
     <form:errors path="username" />
     <form:label path="password"><spring:message code="password_label"/> : </form:label>
-    <form:input type="password" cssClass="login-input" path="password" required="required" placeholder="Enter password here"/>
+    <form:input type="password" cssClass="login-input" path="password" required="required"/>
     <form:errors path="password" />
     <c:catch var="errorLogin"><div class="login-error-msg">${errorLogin}</div></c:catch>
     <form:button><spring:message code="login_label"/></form:button>

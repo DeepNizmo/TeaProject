@@ -26,7 +26,7 @@
 
             <p>
                 Notre site web est destiné à vendre un thé de qualité parmis une sélection démesurée. <br>
-                Vous n'aurez point de mal à dénicher un thé qui vous sied, un thé qui saura combler vos nuit et vos journées. <br>
+                Vous n'aurez point de mal à dénicher un thé qui vous sied, un thé qui saura combler vos nuits et vos journées. <br>
                 Un thé qui vous emmenera voyager par-delà les contrées.
             </p>
         </div>
