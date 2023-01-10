@@ -37,6 +37,12 @@ public class UserDAO implements UserDataAccess{
         return providerConverter.userEntityToUserModel(userRepository.findByUsername(username));
     }
 
+    @Override
+    public User findByUsernameOrEmail(String username, String email) {
+        UserEntity userEntity = userRepository.findByUsernameOrEmail(username,email);
+        return userEntity == null ? null : providerConverter.userEntityToUserModel(userEntity);
+    }
+
     public ArrayList<User> getAllUser() {
         List<UserEntity> userEntityList = userRepository.findAll();
         ArrayList<User> users = new ArrayList<>();

@@ -27,6 +27,6 @@ public class UserService {
         return userDAO.save(user);
     }
     public boolean checkUserExist(User user) {
-        return userDAO.findByUsername(user.getUsername()) != null;
+        return userDAO.findByUsernameOrEmail(user.getUsername(), user.getEmail())!= null;
     }
 }
