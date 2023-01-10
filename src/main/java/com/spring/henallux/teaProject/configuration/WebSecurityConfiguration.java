@@ -18,7 +18,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String LOGIN_REQUEST = "/login";
     private static final String LOGOUT_REQUEST = "/home";
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/cart/**","/about","/home", "/home/**", "/css/**","/images/**", "/tea-category/**", "/tea-product/**", "/cart", "/register", "/register/**","/order/**"};
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/cart/**","/about","/home", "/home/**", "/css/**","/images/**", "/tea-category/**", "/tea-product/**", "/cart", "/register", "/register/**"};
     private static final String[] AUTHORIZED_REQUEST_NON_AUTHENTICATED = new String[] { "/login", "/inscription", "/inscription/**"};
 
     private final UserDetailsService userDetailsServiceImpl;
@@ -42,7 +42,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin() // We define the login part here.
                 .successHandler(new SavedRequestAwareAuthenticationSuccessHandler()) // provided by spring to redirect to the last request
                 .loginPage(LOGIN_REQUEST) // We specify a login page. Or spring creates one by default
-                 // To make the login page the available for any user
+                // To make the login page the available for any user
 
                 .and()
                 .logout() // We define the logout part here - By default : URL = "/logout"
