@@ -35,6 +35,10 @@ tr {
     width: 50px;
 }
 
+.account-img {
+    width: 30px;
+}
+
 .btn {
     border: 5px solid;
     border-image-slice: 1;
@@ -48,7 +52,7 @@ tr {
 
 .btn:hover, .btn:focus {
     background: var(--gradient) !important;
-    //-webkit-background-clip: none !important;
+//-webkit-background-clip: none !important;
     -webkit-text-fill-color: #fff !important;
     border: 5px solid #fff !important;
     box-shadow: #222 1px 0 10px;

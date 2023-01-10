@@ -77,8 +77,9 @@
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
                 <li class="nav-item">
-                    <a class="nav-link" href="<spring:url value="/profile"/>">
-                        <spring:message code="navbar_profile"/>
+                    <a class="nav-link">
+                        <img class="account-img" src="<spring:url value="/images/compte.png"/>"/>
+                            ${pageContext.request.userPrincipal.name}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -120,3 +121,4 @@
 </div>
 </body>
 </html>
+

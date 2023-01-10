@@ -1,18 +1,19 @@
 package com.spring.henallux.teaProject.controller;
 
-import com.spring.henallux.teaProject.dataAccess.dao.CategoryDAO;
-import com.spring.henallux.teaProject.dataAccess.dao.CategoryDataAccess;
 import com.spring.henallux.teaProject.dataAccess.dao.ProductDAO;
 import com.spring.henallux.teaProject.dataAccess.dao.ProductDataAccess;
 import com.spring.henallux.teaProject.model.Cart;
 import com.spring.henallux.teaProject.model.CartItem;
 import com.spring.henallux.teaProject.model.Product;
+import com.spring.henallux.teaProject.model.Category;
 import com.spring.henallux.teaProject.service.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 @Controller
@@ -20,30 +21,28 @@ import java.util.Locale;
 @SessionAttributes({Constants.CURRENT_CART})
 public class ProductController {
     private ProductDataAccess productDAO;
-    private CategoryDataAccess categoryDAO;
+    private MessageSource messageSource;
 
     @Autowired
-    public void getProducts(ProductDAO productDAO) {
+    public void getProducts(ProductDAO productDAO,MessageSource messageSource) {
+
         this.productDAO = productDAO;
-    }
-
-    @Autowired
-    public void getCategories(CategoryDAO categoryDAO) {
-        this.categoryDAO = categoryDAO;
+        this.messageSource=messageSource;
     }
 
     @ModelAttribute(Constants.CURRENT_CART)
     public Cart cart() {return new Cart();}
 
     @RequestMapping (value = "/{categoryId}", method = RequestMethod.GET)
-    public String home(Model model, @PathVariable("categoryId")String categoryId, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart, Locale locale) {
+    public String home(Model model, @PathVariable("categoryId")String categoryId, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart,Locale locale) {
         model.addAttribute(Constants.CURRENT_CART, cart);
-        for (Product product: productDAO.getProductsByCategory(categoryId)) {
-            System.out.println(product.getActualPrice());
-        }
-        model.addAttribute("productsList", productDAO.getProductsByCategory(categoryId));
+        ArrayList<Product> products=productDAO.getProductsByCategory(categoryId);
+        model.addAttribute("productsList",products);
         model.addAttribute("cartItem", new CartItem());
-        model.addAttribute("translatedCategory", categoryDAO.getCategoryById(locale.getLanguage(), categoryId).getTranslation());
+        if(products.isEmpty()) {
+            model.addAttribute("message", messageSource.getMessage("errorCategory", new Object[0],locale));
+            return "integrated:error";
+        }
         return "integrated:product";
     }
 
@@ -56,9 +55,13 @@ public class ProductController {
 
     @RequestMapping(value = "/details/{productId}", method = RequestMethod.GET)
     public String getDetailsProduct(Model model, @PathVariable("productId")int productId, Locale locale){
-        model.addAttribute("product", productDAO.getProduct(productId));
+        Product product=productDAO.getProduct(productId);
+        model.addAttribute("product", product);
         model.addAttribute("cartItem", new CartItem());
-        model.addAttribute("translatedCategory", categoryDAO.getCategoryById(locale.getLanguage(), productDAO.getProduct(productId).getCategory()).getTranslation());
+        if(product == null)  {
+            model.addAttribute("message", messageSource.getMessage("errorProduct", new Object[0],locale));
+            return "integrated:error";
+        }
         return "integrated:productDetails";
     }
 

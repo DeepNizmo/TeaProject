@@ -31,7 +31,7 @@ public class User implements UserDetails {
     @Email
     private String email;
     @Size(max = 11)
-    @Min(value = 0, message = "The value must be positive")
+    @Min(value = 0, message = "phoneError")
     private String phoneNumber = null;
     private String sex;
     private String authorities;
