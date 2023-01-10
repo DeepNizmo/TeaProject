@@ -50,17 +50,20 @@ public class OrderController {
         model.addAttribute(Constants.CURRENT_CART, cart);
         model.addAttribute("order", order);
         order.setDate(new Date());
-        User user = userDAO.findByUsername("user1");         // TODO : Utiliser current user
+        User user = userDAO.findByUsername("user1");
         order.setUser(user);
         orderDAO.saveOrder(cart, order);
-        //if ok redirect payment else (si probleme queqlonque pas de co parexemple) : redirect orderError
         return "redirect:/payment";
     }
 
     @RequestMapping (value = "/paymentSuccess", method = RequestMethod.GET)
     public String success(@ModelAttribute(value = Constants.CURRENT_CART) Cart cart, @ModelAttribute(value = "order") Order order) {
+        order.setDate(new Date());
+        User user = userDAO.findByUsername("user1");
         order.setPaid(true);
+        order.setUser(user);
         orderDAO.saveOrder(cart, order);
+        cart.getItems().clear();
         return "redirect:/home";
     }
 

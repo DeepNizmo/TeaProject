@@ -34,7 +34,7 @@ public class OrderDAO implements OrderDataAccess{
             orderLineEntity.setProduct(providerConverter.productModelToProductEntity(product));
             orderLineEntity.setQuantity(item.getQuantity());
             orderLineEntity.setProductPrice(item.getActualPrice());
-            orderLineRepository.save(orderLineEntity); //return quelque chose ??
+            orderLineRepository.save(orderLineEntity);
         }
     }
 }
