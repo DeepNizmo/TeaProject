@@ -34,4 +34,13 @@ public class Cart {
     public void setQuantityCart(int productId, int quantity) {
         items.get(productId).setQuantity(quantity);
     }
+
+    public double getTotalPrice() {
+        double total = 0;
+
+        for (CartItem item: items.values()) {
+            total += item.getQuantity() * item.getActualPrice();
+        }
+        return total;
+    }
 }

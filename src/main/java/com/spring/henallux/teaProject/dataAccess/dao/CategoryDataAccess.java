@@ -6,4 +6,5 @@ import java.util.ArrayList;
 
 public interface CategoryDataAccess {
     ArrayList<Category> getCategories(String language);
+    Category getCategoryById(String language, String category);
 }
