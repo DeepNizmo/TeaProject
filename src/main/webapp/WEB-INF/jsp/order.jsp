@@ -27,7 +27,7 @@
         <h5><spring:message code="total_label"/> : ${currentCart.getTotalPrice()} ${currency}</h5>
         <br>
         <form:form
-                id="conformOder"
+                id="confirmOder"
                 method="POST"
                 action="/teaProject/order/confirmOrder"
                 modelAttribute="order">
