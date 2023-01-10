@@ -52,8 +52,8 @@ public class ProductDAO implements ProductDataAccess {
             }
             Product product = providerConverter.productEntityToProductModel(productEntity);
             if (reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // si il trouve la réduction, il calcule le prix réduit
-                Integer percentage = reductionEntities.get(iEntity).getPromotion().getPercentage();
-                product.setPromotion(percentage);
+                Integer promotion = reductionEntities.get(iEntity).getPromotion().getPercentage();
+                product.setPromotion(promotion);
             }
             products.add(product);
         }

@@ -25,10 +25,14 @@ public class PaymentController {
         return "integrated:payment";
     }
 
-    @RequestMapping (value = "/send", method = RequestMethod.POST) //peut être pas utile.
-    public String send(Model model, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
-        model.addAttribute(Constants.CURRENT_CART, cart);
+    @RequestMapping (value = "/paymentSuccess", method = RequestMethod.GET) //peut être pas utile.
+    public String success() {
         //si payé go paymentSuccess et isPaid True DB sinon erreur
-        return "redirect:/paymentSuccess";
+        return "integrated:/paymentSuccess";
+    }
+
+    @RequestMapping (value = "/paymentFailed", method = RequestMethod.GET) //peut être pas utile.
+    public String fail() {
+        return "integrated:/paymentFailed";
     }
 }
