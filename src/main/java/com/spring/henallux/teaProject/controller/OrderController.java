@@ -22,7 +22,7 @@ import java.util.Date;
 @SessionAttributes({Constants.CURRENT_CART, Constants.CURRENT_USER})
 public class OrderController {
     private OrderDataAccess orderDAO;
-    private UserDataAccess userDAO; // TEMPORAIRE
+    private UserDataAccess userDAO;
 
     public OrderController(OrderDataAccess orderDAO, UserDataAccess userDAO) {
         this.orderDAO = orderDAO;
@@ -39,9 +39,8 @@ public class OrderController {
     public Order order() {return new Order();}
 
     @RequestMapping (method = RequestMethod.GET)
-    public String order(Model model, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) { //TODO : prevoir que si un client va sur la page order alors que le panier est vide, il est refirigé vers une autre page pour lui dire que son panier est vide.
+    public String order(Model model, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
         model.addAttribute(Constants.CURRENT_CART, cart);
-        //si vide redirect card
         return "integrated:order";
     }
 

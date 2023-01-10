@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Transactional //il faut peut être juste le mettre sur getProductsByCategory
+@Transactional
 public class ProductDAO implements ProductDataAccess {
     private ProductRepository productRepository;
     private ProviderConverter providerConverter;
@@ -45,13 +45,13 @@ public class ProductDAO implements ProductDataAccess {
         List<ReductionEntity> reductionEntities = reductionRepository.findByPromotion_StartDateLessThanEqualAndPromotion_EndDateGreaterThanEqual(new Date(new java.util.Date().getTime()), new Date(new java.util.Date().getTime()));
         ArrayList<Product> products = new ArrayList<>();
 
-        for (ProductEntity productEntity : productEntities) { //passe en revue tout les produits
+        for (ProductEntity productEntity : productEntities) {
             int iEntity = 0;
-            while (iEntity < reductionEntities.size() - 1 && !reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // tant qu'il n'a pas trouvé de réduction sur le produit
+            while (iEntity < reductionEntities.size() - 1 && !reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) {
                 iEntity++;
             }
             Product product = providerConverter.productEntityToProductModel(productEntity);
-            if (reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // si il trouve la réduction, il calcule le prix réduit
+            if (reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) {
                 Integer promotion = reductionEntities.get(iEntity).getPromotion().getPercentage();
                 product.setPromotion(promotion);
             }
@@ -69,10 +69,10 @@ public class ProductDAO implements ProductDataAccess {
         Product product = providerConverter.productEntityToProductModel(productEntity);
 
         int iEntity = 0;
-        while (iEntity < reductionEntities.size() - 1 && !reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // tant qu'il n'a pas trouvé de réduction sur le produit
+        while (iEntity < reductionEntities.size() - 1 && !reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) {
             iEntity++;
         }
-        if (reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // si il trouve la réduction, il calcule le prix réduit
+        if (reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) {
             Integer promotion = reductionEntities.get(iEntity).getPromotion().getPercentage();
             product.setPromotion(promotion);
         }

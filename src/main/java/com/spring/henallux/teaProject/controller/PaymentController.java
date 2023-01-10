@@ -22,8 +22,7 @@ public class PaymentController {
     public String pay(Model model, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
         model.addAttribute(Constants.CURRENT_CART, cart);
         model.addAttribute("cartItem", new CartItem());
-        //payer
-        //clear cart
+
         return "integrated:payment";
     }
 }

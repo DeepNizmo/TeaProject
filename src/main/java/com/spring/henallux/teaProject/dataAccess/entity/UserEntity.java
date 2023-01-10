@@ -35,21 +35,8 @@ public class UserEntity {
     @Column(name="enabled")
     private Boolean enabled;
 
-    /*
-    MAPPING UNE FOIS QUE ORDERENTITY SERA CREE
-    @OneToMany(mappedBy="user", fetch=FetchType.LAZY)
-    private Collection<OrderEntity> orderEntities;*/
-
     public UserEntity() {
     }
-
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
 
     public String getUsername() {
         return username;
@@ -152,13 +139,3 @@ public class UserEntity {
         this.enabled = enabled;
     }
 }
-
-/*
-    public Collection<OrderEntity> getOrderEntities() {
-        return orderEntities;
-    }
-
-    public void setOrderEntities(Collection<OrderEntity> orderEntities) {
-        this.orderEntities = orderEntities;
-    }
-}*/

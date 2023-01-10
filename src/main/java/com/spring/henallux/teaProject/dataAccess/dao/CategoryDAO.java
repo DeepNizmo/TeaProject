@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Transactional//pas bessoin ici je pense
+@Transactional
 public class CategoryDAO implements CategoryDataAccess{
 
     private CategoryRepository categoryRepository;

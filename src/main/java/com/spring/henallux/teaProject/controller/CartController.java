@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping(value = "/cart")
 @SessionAttributes({Constants.CURRENT_CART})
 public class CartController {
-    private ProductDataAccess productDAO;
 
     @ModelAttribute(Constants.CURRENT_CART)
     public Cart cart() {return new Cart();}
@@ -30,13 +29,13 @@ public class CartController {
     }
 
     @RequestMapping (value = "/removeItem", method = RequestMethod.POST)
-    public String removeItem(Model model, @ModelAttribute(value = "cartItem") CartItem item, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
+    public String removeItem(@ModelAttribute(value = "cartItem") CartItem item, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
         cart.removeProduct(item.getId());
         return "redirect:/cart";
     }
 
     @RequestMapping (value = "/setQuantity", method = RequestMethod.POST)
-    public String setQuantity(Model model, @ModelAttribute(value = "cartItem") CartItem item, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
+    public String setQuantity(@ModelAttribute(value = "cartItem") CartItem item, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
         cart.setQuantityCart(item.getId(), item.getQuantity());
         return "redirect:/cart";
     }
