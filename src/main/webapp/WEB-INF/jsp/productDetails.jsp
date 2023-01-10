@@ -18,8 +18,8 @@
             <img src="<spring:url value='/images/greenTeaCategory.png'/>" class="rounded" alt="..." style="width: 35rem;" >
             <h5 class="card-title"><spring:message code="reference_label"/> : ${productId}</h5>
             <h5 class="card-title"><spring:message code="name_label"/> : ${product.getName()}</h5>
-            <h5 class="card-title"><spring:message code="category_label"/> : ${product.getCategory()}</h5>
-            <c:if test="${product.getReducedPrice() != null}">
+            <h5 class="card-title"><spring:message code="category_label"/> : ${translatedCategory}</h5>
+            <c:if test="${product.getPromotion() != null}">
                 <h5 style="text-decoration-line: line-through"><spring:message code="price"/> : ${product.getUnitPrice()} ${currency}</h5>
             </c:if>
             <h5><spring:message code="price"/> : ${product.getActualPrice()} ${currency}</h5>
@@ -35,9 +35,6 @@
                 <form:input path="category" type="hidden" value="${product.getCategory()}"/>
                 <form:input path="quantity" type="hidden" value="${1}"/>
                 <form:input path="actualPrice" type="hidden" value="${product.getActualPrice()}"/>
-                <c:if test="${product.getReducedPrice() != null}">
-                    <form:input path="reducedPrice" type="hidden" value="${product.getReducedPrice()}"/>
-                </c:if>
                 <form:button class="btn btn-primary"><spring:message code="add_to_cart_label"/></form:button>
             </form:form>
         </div>

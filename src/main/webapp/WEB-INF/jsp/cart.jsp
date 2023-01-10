@@ -25,7 +25,7 @@
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">${item.getName()}</h5>
-                                    <c:if test="${item.getReducedPrice() != null}">
+                                    <c:if test="${item.getUnitPrice() != item.getActualPrice()}">
                                         <h6 style="text-decoration-line: line-through">${item.getUnitPrice()} ${currency}</h6>
                                     </c:if>
                                     <h5>${item.getActualPrice()} ${currency}</h5>

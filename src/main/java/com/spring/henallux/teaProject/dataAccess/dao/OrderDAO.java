@@ -30,7 +30,7 @@ public class OrderDAO implements OrderDataAccess{
         for (CartItem item: cart.getItems().values()) {
             OrderLineEntity orderLineEntity = new OrderLineEntity();
             orderLineEntity.setOrder(orderEntity);
-            Product product = new Product(item.getId(), item.getName(), item.getUnitPrice(), item.getDetails(), item.getCategory(), item.getReducedPrice());
+            Product product = new Product(item.getId(), item.getName(), item.getActualPrice(), item.getDetails(), item.getCategory());
             orderLineEntity.setProduct(providerConverter.productModelToProductEntity(product));
             orderLineEntity.setQuantity(item.getQuantity());
             orderLineEntity.setProductPrice(item.getActualPrice());

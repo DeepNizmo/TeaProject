@@ -22,8 +22,8 @@
                         <img src="<spring:url value='/images/greenTeaCategory.png'/>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${product.getName()}</h5>
-                            <h6>${product.getCategory()}</h6>
-                            <c:if test="${product.getReducedPrice() != null}">
+                            <h6>${translatedCategory}</h6>
+                            <c:if test="${product.getPromotion() != null}">
                                 <h6 style="text-decoration-line: line-through">${product.getUnitPrice()} ${currency}</h6>
                             </c:if>
                                 <h5>${product.getActualPrice()} ${currency}</h5>
@@ -38,9 +38,6 @@
                                 <form:input path="category" type="hidden" value="${product.getCategory()}"/>
                                 <form:input path="quantity" type="hidden" value="${1}"/>
                                 <form:input path="actualPrice" type="hidden" value="${product.getActualPrice()}"/>
-                                <c:if test="${product.getReducedPrice() != null}">
-                                    <form:input path="reducedPrice" type="hidden" value="${product.getReducedPrice()}"/>
-                                </c:if>
                                 <form:button class="btn btn-primary"><spring:message code="add_to_cart_label"/></form:button>
                             </form:form>
                         </div>

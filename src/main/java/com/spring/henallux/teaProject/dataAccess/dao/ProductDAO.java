@@ -52,8 +52,8 @@ public class ProductDAO implements ProductDataAccess {
             }
             Product product = providerConverter.productEntityToProductModel(productEntity);
             if (reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // si il trouve la réduction, il calcule le prix réduit
-                Double reducedPrice = (1 - ((double)reductionEntities.get(iEntity).getPromotion().getPercentage() / 100)) * productEntity.getUnitPrice();
-                product.setReducedPrice(reducedPrice);
+                Integer percentage = reductionEntities.get(iEntity).getPromotion().getPercentage();
+                product.setPromotion(percentage);
             }
             products.add(product);
         }
@@ -73,8 +73,8 @@ public class ProductDAO implements ProductDataAccess {
             iEntity++;
         }
         if (reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) { // si il trouve la réduction, il calcule le prix réduit
-            Double reducedPrice = (1 - ((double)reductionEntities.get(iEntity).getPromotion().getPercentage() / 100)) * productEntity.getUnitPrice();
-            product.setReducedPrice(reducedPrice);
+            Integer promotion = reductionEntities.get(iEntity).getPromotion().getPercentage();
+            product.setPromotion(promotion);
         }
         return product;
     }

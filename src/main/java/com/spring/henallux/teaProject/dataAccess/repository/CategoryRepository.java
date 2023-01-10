@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends JpaRepository<CategoryEntity, String> {
     List<CategoryEntity> findByLanguageId(String language);
+    CategoryEntity findByLanguageIdAndCategoryId(String language, String category);
 }

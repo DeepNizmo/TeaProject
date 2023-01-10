@@ -6,18 +6,17 @@ public class Product {
     private Double unitPrice;
     private String details;
     private String category;
-    private Double reducedPrice;
+    private Integer promotion;
 
     public Product() {
     }
 
-    public Product(Integer id, String name, Double unitPrice, String details, String category, Double reducedPrice) {
+    public Product(Integer id, String name, Double actualPrice, String details, String category) {
         this.id = id;
         this.name = name;
-        this.unitPrice = unitPrice;
+        this.unitPrice = actualPrice;
         this.details = details;
         this.category = category;
-        this.reducedPrice = reducedPrice;
     }
 
     public Integer getId() {
@@ -60,15 +59,15 @@ public class Product {
         this.category = category;
     }
 
-    public Double getReducedPrice() {
-        return reducedPrice;
+    public Integer getPromotion() {
+        return promotion;
     }
 
-    public void setReducedPrice(Double reducedPrice) {
-        this.reducedPrice = reducedPrice;
+    public void setPromotion(Integer promotion) {
+        this.promotion = promotion;
     }
 
     public Double getActualPrice() {
-        return reducedPrice != null ? reducedPrice : unitPrice;
+        return promotion != null ? ((1 - ((double)promotion / 100)) * unitPrice) : unitPrice;
     }
 }

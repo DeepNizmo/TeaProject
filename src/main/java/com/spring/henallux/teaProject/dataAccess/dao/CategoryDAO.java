@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional//pas bessoin ici je pense
 public class CategoryDAO implements CategoryDataAccess{
 
     private CategoryRepository categoryRepository;
@@ -36,5 +36,10 @@ public class CategoryDAO implements CategoryDataAccess{
             categories.add(category);
         }
         return categories;
+    }
+
+    @Override
+    public Category getCategoryById(String language, String category) {
+        return providerConverter.categoryEntityToCategoryModel(categoryRepository.findByLanguageIdAndCategoryId(language, category));
     }
 }

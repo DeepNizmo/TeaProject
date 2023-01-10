@@ -39,11 +39,7 @@ public class Cart {
         double total = 0;
 
         for (CartItem item: items.values()) {
-            if(item.getReducedPrice() != null) {
-                total += item.getQuantity() * item.getReducedPrice();
-            } else {
-                total += item.getQuantity() * item.getUnitPrice();
-            }
+            total += item.getQuantity() * item.getActualPrice();
         }
         return total;
     }
