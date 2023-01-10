@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="form registration">
-  <form:form id="form-registration" method="post" modelAttribute="currentUser" action="/teaproject/register/send" cssClass="Registration-form">
+  <form:form id="form-registration" method="post" modelAttribute="currentUser" action="/teaProject/register/send" cssClass="Registration-form">
     <h2><spring:message code="registration_form_label"/></h2>
     <table>
       <tr>
@@ -27,7 +27,7 @@
         <td class="fr-error"> <form:errors path="lastname" /></td>
       </tr>
       <tr>
-        <td class="fr-label"><form:label path="firstName"><spring:message code="firstname"/>* : </form:label></td>
+        <td class="fr-label"><form:label path="firstName"><spring:message code="firstname"/> : </form:label></td>
         <td class="fr-input">  <form:input path="firstName" required="required"/></td>
         <td class="fr-error">   <form:errors path="firstName" /></td>
       </tr>
