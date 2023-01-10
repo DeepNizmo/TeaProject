@@ -17,11 +17,6 @@ public class UserService {
     }
 
     public User saveUser(User user) {
-        user.setAuthorities("ROLE_USER");
-        user.setAccountNonExpired(true);
-        user.setAccountNonLocked(true);
-        user.setCredentialsNonExpired(true);
-        user.setEnabled(true);
         BCryptPasswordEncoder b = new BCryptPasswordEncoder();
         user.setPassword((user.getPassword()));
         return userDAO.save(user);

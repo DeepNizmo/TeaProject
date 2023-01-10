@@ -39,7 +39,7 @@ public class User implements UserDetails {
     private Boolean accountNonLocked;
     private Boolean credentialsNonExpired;
     private Boolean enabled;
-    public User(String username, String password,String confirmPassword,String lastName,String firstName,String deliveryAddress,String email,String phoneNumber,String sex,String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
+    public User(String username, String password,String confirmPassword,String lastName,String firstName,String deliveryAddress,String email,String phoneNumber,String sex) {
         this.username=username;
         this.password=password;
         this.lastName=lastName;

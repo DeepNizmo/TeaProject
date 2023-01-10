@@ -25,7 +25,7 @@ public class PaymentController {
         return "integrated:payment";
     }
 
-    @RequestMapping (value = "/send", method = RequestMethod.POST)
+    @RequestMapping (value = "/send", method = RequestMethod.POST) //peut être pas utile.
     public String send(Model model, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart) {
         model.addAttribute(Constants.CURRENT_CART, cart);
         //si payé go paymentSuccess et isPaid True DB sinon erreur

@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="form registration">
-  <form:form id="form-registration" method="post" modelAttribute="currentUser" action="/teaProject/register/send" cssClass="Registration-form">
+  <form:form id="form-registration" method="post" modelAttribute="currentUser" action="/teaproject/register/send" cssClass="Registration-form">
     <h2><spring:message code="registration_form_label"/></h2>
     <table>
       <tr>
