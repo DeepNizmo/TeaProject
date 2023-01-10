@@ -21,6 +21,10 @@
                             <img src="<spring:url value='/images/greenTeaCategory.png'/>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><c:out value="${category.getTranslation()}"/></h5>
+                                <p>id : ${category.getId()}</p>
+                                <p>categoryId : ${category.getCategoryId()}</p>
+                                <p>languageId : ${category.getLanguageId()}</p>
+                                <p>translation : ${category.getTranslation()}</p>
                             </div>
                         </div>
                     </div>
