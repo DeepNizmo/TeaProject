@@ -25,21 +25,28 @@
     <br>
     <h5><spring:message code="total_label"/> : ${currentCart.getTotalPrice()} ${currency}</h5>
     <br>
-    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-      <!-- Identify your business so that you can collect the payments. -->
-      <input type="hidden" name="business" value="sb-qc9jp24839866@business.example.com">
-      <!-- Specify a Buy Now button. -->
-      <input type="hidden" name="cmd" value="_xclick">
-      <!-- Specify details about the item that buyers will purchase. -->
-      <input type="hidden" name="item_name" value="${currentCart.getItems().get(0).getName()}" />
-      <input type="hidden" name="amount" value="5.95">
-      <input type="hidden" name="currency_code" value="EUR">
-      <!-- Display the payment button. -->
-      <input type="image" name="submit" border="0" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="Buy Now">
-      <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-    </form>
+    <form:form method="post"
+               action="https://www.sandbox.paypal.com/cgi-bin/webscr"
+               modelAttribute="cartItem">
+
+      <input type="hidden" name="business" value="tea_project@shop.com" />
+      <input type="hidden" name="cmd" value="_cart" />
+      <input type="hidden" name="upload" value="1" />
+
+      <c:forEach items="${currentCart.getItems().values()}" var="item" varStatus="status">
+        <input type="hidden" name="quantity_${status.count}" value="${item.getQuantity()}" />
+        <input type="hidden" name="amount_${status.count}" value="${item.getActualPrice()}" />
+        <input type="hidden" name="item_name_${status.count}" value="${item.getName()}" />
+      </c:forEach>
+      <input type="hidden" name="return" value="http://localhost:8083/teaProject/order/paymentSuccess" />
+      <input type="hidden" name="cancel_return" value="http://localhost:8083/teaProject/order/paymentFailed" />
+      <input type="hidden" name="currency_code" value="EUR" />
+      <input type="hidden" name="lc" value="${locale.getLanguage()}-${locale.getCountry()}" />
+
+      <form:button class="btn"><spring:message code="buy_button"/></form:button>
+      <a class="btn btn-primary" href="<spring:url value="/cart"/>"><spring:message code="back_to_cart_label"/></a>
+    </form:form>
     <br>
-    <a class="btn btn-primary" href="<spring:url value="/cart"/>"><spring:message code="back_to_cart_label"/></a>
   </div>
 </body>
 </html>

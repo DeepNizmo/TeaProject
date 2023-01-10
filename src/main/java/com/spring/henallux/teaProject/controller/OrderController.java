@@ -19,7 +19,7 @@ import java.util.Date;
 
 @Controller
 @RequestMapping(value="/order")
-@SessionAttributes({Constants.CURRENT_CART})
+@SessionAttributes({Constants.CURRENT_CART, Constants.CURRENT_USER})
 public class OrderController {
     private OrderDataAccess orderDAO;
     private UserDataAccess userDAO; // TEMPORAIRE
@@ -31,6 +31,9 @@ public class OrderController {
 
     @ModelAttribute(Constants.CURRENT_CART)
     public Cart cart() {return new Cart();}
+
+    @ModelAttribute(Constants.CURRENT_USER)
+    public User user() {return new User();}
 
     @ModelAttribute("order")
     public Order order() {return new Order();}
@@ -46,11 +49,23 @@ public class OrderController {
     public String saveOrder(Model model, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart, @ModelAttribute(value = "order") Order order) {
         model.addAttribute(Constants.CURRENT_CART, cart);
         model.addAttribute("order", order);
-        order.setDate(new Date()); //pas ouf je pense, mais j'ai pas réusssis à le faire passer dans le form
-        User user = userDAO.findByUsername("user1");
+        order.setDate(new Date());
+        User user = userDAO.findByUsername("user1");         // TODO : Utiliser current user
         order.setUser(user);
         orderDAO.saveOrder(cart, order);
         //if ok redirect payment else (si probleme queqlonque pas de co parexemple) : redirect orderError
         return "redirect:/payment";
+    }
+
+    @RequestMapping (value = "/paymentSuccess", method = RequestMethod.GET)
+    public String success(@ModelAttribute(value = Constants.CURRENT_CART) Cart cart, @ModelAttribute(value = "order") Order order) {
+        order.setPaid(true);
+        orderDAO.saveOrder(cart, order);
+        return "redirect:/home";
+    }
+
+    @RequestMapping (value = "/paymentFailed", method = RequestMethod.GET)
+    public String fail() {
+        return "redirect:/cart";
     }
 }
