@@ -41,6 +41,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin() // We define the login part here.
                 .successHandler(new SavedRequestAwareAuthenticationSuccessHandler()) // provided by spring to redirect to the last request
+                .defaultSuccessUrl("/home", true)
                 .loginPage(LOGIN_REQUEST) // We specify a login page. Or spring creates one by default
                 // To make the login page the available for any user
 
