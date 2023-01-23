@@ -9,7 +9,7 @@
 <%@ include file="include/importTags.jsp" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Error</title>
 </head>
 <body>
     <p>${message}</p>

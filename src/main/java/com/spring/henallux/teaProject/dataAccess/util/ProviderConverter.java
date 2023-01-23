@@ -56,6 +56,11 @@ public class ProviderConverter {
         return orderEntity;
     }
 
+    public Order orderEntityToOrderModel(OrderEntity orderEntity) {
+        Order order = mapper.map(orderEntity, Order.class);
+        return order;
+    }
+
     public Reduction reductionEntityToReductionModel(ReductionEntity reductionEntity) {
         Reduction reduction = mapper.map(reductionEntity, Reduction.class);
         return reduction;

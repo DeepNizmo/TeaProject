@@ -1,41 +1,33 @@
 package com.spring.henallux.teaProject.controller;
 
 import com.spring.henallux.teaProject.dataAccess.dao.OrderDataAccess;
-import com.spring.henallux.teaProject.dataAccess.dao.UserDataAccess;
 import com.spring.henallux.teaProject.model.Cart;
 import com.spring.henallux.teaProject.model.Order;
 import com.spring.henallux.teaProject.model.User;
 import com.spring.henallux.teaProject.service.Constants;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
 @RequestMapping(value="/order")
-@SessionAttributes({Constants.CURRENT_CART, Constants.CURRENT_USER})
+@SessionAttributes({Constants.CURRENT_CART, Constants.CURRENT_ORDER})
 public class OrderController {
     private OrderDataAccess orderDAO;
-    private UserDataAccess userDAO;
 
-    public OrderController(OrderDataAccess orderDAO, UserDataAccess userDAO) {
+    public OrderController(OrderDataAccess orderDAO) {
         this.orderDAO = orderDAO;
-        this.userDAO = userDAO;
     }
 
     @ModelAttribute(Constants.CURRENT_CART)
     public Cart cart() {return new Cart();}
 
-    @ModelAttribute(Constants.CURRENT_USER)
-    public User user() {return new User();}
-
-    @ModelAttribute("order")
+    @ModelAttribute(Constants.CURRENT_ORDER)
     public Order order() {return new Order();}
 
     @RequestMapping (method = RequestMethod.GET)
@@ -45,23 +37,21 @@ public class OrderController {
     }
 
     @RequestMapping (value = "/confirmOrder", method = RequestMethod.POST)
-    public String saveOrder(Model model, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart, @ModelAttribute(value = "order") Order order) {
+    public String saveOrder(Model model, @ModelAttribute(value = Constants.CURRENT_CART) Cart cart, @ModelAttribute(value = Constants.CURRENT_ORDER) Order order, Authentication authentication) {
         model.addAttribute(Constants.CURRENT_CART, cart);
-        model.addAttribute("order", order);
+        model.addAttribute(Constants.CURRENT_ORDER, order);
         order.setDate(new Date());
-        User user = userDAO.findByUsername("user1");
-        order.setUser(user);
-        orderDAO.saveOrder(cart, order);
+        order.setUser((User) authentication.getPrincipal());
+        Order orderSaved = orderDAO.saveOrder(cart, order);
+        order.setId(orderSaved.getId());
         return "redirect:/payment";
     }
 
     @RequestMapping (value = "/paymentSuccess", method = RequestMethod.GET)
-    public String success(@ModelAttribute(value = Constants.CURRENT_CART) Cart cart, @ModelAttribute(value = "order") Order order) {
-        order.setDate(new Date());
-        User user = userDAO.findByUsername("user1");
+    public String success(@ModelAttribute(value = Constants.CURRENT_CART) Cart cart, @ModelAttribute(value = Constants.CURRENT_ORDER) Order order) {
         order.setPaid(true);
-        order.setUser(user);
-        orderDAO.saveOrder(cart, order);
+        Order orderUpdated = orderDAO.saveOrder(cart, order);
+        order.setId(null);
         cart.getItems().clear();
         return "redirect:/home";
     }

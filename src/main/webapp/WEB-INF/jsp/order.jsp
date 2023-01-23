@@ -30,7 +30,7 @@
                 id="confirmOder"
                 method="POST"
                 action="/teaProject/order/confirmOrder"
-                modelAttribute="order">
+                modelAttribute="currentOrder">
             <form:input path="paid" type="hidden" value="${false}"/>
             <form:button class="btn btn-primary"><spring:message code="confirm_order_label"/></form:button>
             <a class="btn btn-primary" href="<spring:url value="/cart"/>"><spring:message code="back_to_cart_label"/></a>

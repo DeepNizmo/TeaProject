@@ -23,10 +23,10 @@ public class OrderDAO implements OrderDataAccess{
     }
 
     @Override
-    public void saveOrder(Cart cart, Order order) {
+    public Order saveOrder(Cart cart, Order order) {
         OrderEntity orderEntity;
         orderEntity = providerConverter.orderModelToOrderEntity(order);
-        orderRepository.save(orderEntity);
+        orderEntity = orderRepository.save(orderEntity);
         for (CartItem item: cart.getItems().values()) {
             OrderLineEntity orderLineEntity = new OrderLineEntity();
             orderLineEntity.setOrder(orderEntity);
@@ -36,5 +36,6 @@ public class OrderDAO implements OrderDataAccess{
             orderLineEntity.setProductPrice(item.getActualPrice());
             orderLineRepository.save(orderLineEntity);
         }
+        return providerConverter.orderEntityToOrderModel(orderEntity);
     }
 }
