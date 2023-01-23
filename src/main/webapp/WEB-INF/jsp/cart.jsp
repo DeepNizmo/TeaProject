@@ -36,6 +36,8 @@
                                         <form:input path="id" type="hidden" value="${item.getId()}"/>
                                         <form:label path="quantity"><spring:message code="quantity_label"/> : </form:label>
                                         <form:input path="quantity" value="${item.getQuantity()}"/>
+                                        <form:errors path="quantity" />
+                                        <c:if test="${not empty isNotDigitMessage}">${isNotDigitMessage}</c:if>
                                         <form:button class="btn btn-primary"><spring:message code="edit_label"/></form:button>
                                     </form:form>
                                     <form:form id="removeItem"

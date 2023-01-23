@@ -1,11 +1,19 @@
 package com.spring.henallux.teaProject.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class CartItem {
     private Integer id;
     private String name;
     private Double unitPrice;
     private String details;
     private String category;
+
+    @NotNull
+    @Min(value = 1)
+    @Max(value = 999)
     private Integer quantity;
     private Double actualPrice;
 
