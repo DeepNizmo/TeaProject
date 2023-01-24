@@ -19,10 +19,10 @@ public class User implements UserDetails {
     @NotNull
     @Size(min=6, max=30)
     private String confirmPassword;
-    @Size(min=4, max=20)
+    @Size(max=20)
     private String firstName;
     @NotNull
-    @Size(min=4, max=20)
+    @Size(min=3,max=20)
     private String lastName;
     @NotNull
     @Size(min=1, max=500)
@@ -30,6 +30,7 @@ public class User implements UserDetails {
     @NotNull
     @Email
     private String email;
+    @NotNull
     @Size(max = 11)
     @Min(value = 0, message = "phoneError")
     private String phoneNumber = null;
@@ -42,12 +43,13 @@ public class User implements UserDetails {
     public User(String username, String password,String confirmPassword,String lastName,String firstName,String deliveryAddress,String email,String phoneNumber,String sex,String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
         this.username=username;
         this.password=password;
+        this.confirmPassword=confirmPassword;
         this.lastName=lastName;
-        this.firstName=firstName;
+        setFirstname(firstName);
         this.deliveryAddress=deliveryAddress;
         this.email=email;
-        setPhoneNumber(phoneNumber);
-        this.sex=sex;
+        this.phoneNumber=phoneNumber;
+        setSex(sex);
         this.authorities = authorities;
         this.accountNonExpired = accountNonExpired;
         this.accountNonLocked = accountNonLocked;
@@ -81,12 +83,13 @@ public class User implements UserDetails {
         this.confirmPassword = confirmPassword;
     }
 
-    public String getFirstName() {
+    public String getFirstname() {
         return firstName;
     }
 
-    public void setFirstName(String firstname) {
-        this.firstName = firstname;
+    public void setFirstname(String firstname) {
+        if(firstname!= null && firstname.isEmpty()) this.firstName = null;
+        else this.firstName = firstname;
     }
 
     public String getLastname() {
@@ -116,18 +119,17 @@ public class User implements UserDetails {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
     public void setPhoneNumber(String phoneNumber) {
-        if(phoneNumber != null && phoneNumber.isEmpty()) this.phoneNumber = null;
-        else this.phoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setSex(String sex) {
+        if(sex != null && sex.isEmpty()) this.sex = null;
+        else this.sex = sex;
     }
 
     public String getSex() {
         return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
     }
 
     @Override
