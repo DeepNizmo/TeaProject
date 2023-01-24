@@ -5,7 +5,6 @@ import com.spring.henallux.teaProject.dataAccess.dao.ProductDataAccess;
 import com.spring.henallux.teaProject.model.Cart;
 import com.spring.henallux.teaProject.model.CartItem;
 import com.spring.henallux.teaProject.model.Product;
-import com.spring.henallux.teaProject.model.Category;
 import com.spring.henallux.teaProject.service.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

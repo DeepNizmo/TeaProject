@@ -6,9 +6,12 @@ import com.spring.henallux.teaProject.dataAccess.repository.ProductRepository;
 import com.spring.henallux.teaProject.dataAccess.repository.ReductionRepository;
 import com.spring.henallux.teaProject.dataAccess.util.ProviderConverter;
 import com.spring.henallux.teaProject.model.Product;
+import com.spring.henallux.teaProject.model.Promotion;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,18 +47,18 @@ public class ProductDAO implements ProductDataAccess {
         List<ProductEntity> productEntities = productRepository.findByCategory(category);
         List<ReductionEntity> reductionEntities = reductionRepository.findByPromotion_StartDateLessThanEqualAndPromotion_EndDateGreaterThanEqual(new Date(new java.util.Date().getTime()), new Date(new java.util.Date().getTime()));
         ArrayList<Product> products = new ArrayList<>();
+        ArrayList<Integer> promotions = new ArrayList<>();;
 
         for (ProductEntity productEntity : productEntities) {
-            int iEntity = 0;
-            while (iEntity < reductionEntities.size() - 1 && !reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) {
-                iEntity++;
-            }
             Product product = providerConverter.productEntityToProductModel(productEntity);
-            if (reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) {
-                Integer promotion = reductionEntities.get(iEntity).getPromotion().getPercentage();
-                product.setPromotion(promotion);
+            for (ReductionEntity reductionEntity : reductionEntities) {
+                if (reductionEntity.getProduct().getId() == productEntity.getId()) {
+                    promotions.add(reductionEntity.getPromotion().getPercentage());
+                }
             }
+            product.setPromotions(promotions);
             products.add(product);
+            promotions = new ArrayList<>();
         }
         return products;
     }
@@ -64,18 +67,17 @@ public class ProductDAO implements ProductDataAccess {
     public Product getProduct(int idProduct) {
         ProductEntity productEntity = productRepository.findById(idProduct);
         List<ReductionEntity> reductionEntities = reductionRepository.findByPromotion_StartDateLessThanEqualAndPromotion_EndDateGreaterThanEqual(new Date(new java.util.Date().getTime()), new Date(new java.util.Date().getTime()));
+        ArrayList<Integer> promotions = new ArrayList<>();
 
         if(productEntity == null) return null;
         Product product = providerConverter.productEntityToProductModel(productEntity);
 
-        int iEntity = 0;
-        while (iEntity < reductionEntities.size() - 1 && !reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) {
-            iEntity++;
+        for (ReductionEntity reductionEntity : reductionEntities) {
+            if (reductionEntity.getProduct().getId() == productEntity.getId()) {
+                promotions.add(reductionEntity.getPromotion().getPercentage());
+            }
         }
-        if (reductionEntities.get(iEntity).getProduct().getId().equals(productEntity.getId())) {
-            Integer promotion = reductionEntities.get(iEntity).getPromotion().getPercentage();
-            product.setPromotion(promotion);
-        }
+        product.setPromotions(promotions);
         return product;
     }
 }

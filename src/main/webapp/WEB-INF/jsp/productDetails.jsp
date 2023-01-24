@@ -19,7 +19,7 @@
             <h5 class="card-title"><spring:message code="reference_label"/> : ${productId}</h5>
             <h5 class="card-title"><spring:message code="name_label"/> : ${product.getName()}</h5>
             <h5 class="card-title"><spring:message code="category_label"/> : ${translatedCategory}</h5>
-            <c:if test="${product.getPromotion() != null}">
+            <c:if test="${!product.getPromotions().isEmpty()}">
                 <h5 style="text-decoration-line: line-through"><spring:message code="price"/> : ${product.getUnitPrice()} ${currency}</h5>
             </c:if>
             <h5><spring:message code="price"/> : ${product.getActualPrice()} ${currency}</h5>

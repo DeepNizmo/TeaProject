@@ -1,12 +1,14 @@
 package com.spring.henallux.teaProject.model;
 
+import java.util.ArrayList;
+
 public class Product {
     private Integer id;
     private String name;
     private Double unitPrice;
     private String details;
     private String category;
-    private Integer promotion;
+    private ArrayList<Integer> promotions;
 
     public Product() {
     }
@@ -59,15 +61,20 @@ public class Product {
         this.category = category;
     }
 
-    public Integer getPromotion() {
-        return promotion;
+    public ArrayList<Integer> getPromotions() {
+        return promotions;
     }
 
-    public void setPromotion(Integer promotion) {
-        this.promotion = promotion;
+    public void setPromotions(ArrayList<Integer> promotions) {
+        this.promotions = promotions;
     }
 
     public Double getActualPrice() {
-        return promotion != null ? ((1 - ((double)promotion / 100)) * unitPrice) : unitPrice;
+        Double reducedPrice = unitPrice;
+        for (Integer promotion: promotions){
+            reducedPrice *= (1 - ((double)promotion / 100));
+
+        }
+        return reducedPrice;
     }
 }

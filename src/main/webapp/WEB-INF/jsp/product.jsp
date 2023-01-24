@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <h5 class="card-title">${product.getName()}</h5>
                             <h6>${translatedCategory}</h6>
-                            <c:if test="${product.getPromotion() != null}">
+                            <c:if test="${!product.getPromotions().isEmpty()}">
                                 <h6 style="text-decoration-line: line-through">${product.getUnitPrice()} ${currency}</h6>
                             </c:if>
                                 <h5>${product.getActualPrice()} ${currency}</h5>
