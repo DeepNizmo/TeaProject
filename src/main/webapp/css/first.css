@@ -4,9 +4,6 @@
 
 body {
     background: #111 !important;
-}
-
-h1, h5, p,td {
     color: rgba(250, 250, 250, 0.8);
 }
 
