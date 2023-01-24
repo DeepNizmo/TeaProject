@@ -27,9 +27,9 @@
         <td class="fr-error"> <form:errors path="lastname" /></td>
       </tr>
       <tr>
-        <td class="fr-label"><form:label path="firstName"><spring:message code="firstname"/> : </form:label></td>
-        <td class="fr-input">  <form:input path="firstName" required="required"/></td>
-        <td class="fr-error">   <form:errors path="firstName" /></td>
+        <td class="fr-label"><form:label path="firstname"><spring:message code="firstname"/> : </form:label></td>
+        <td class="fr-input">  <form:input path="firstname"/></td>
+        <td class="fr-error">   <form:errors path="firstname" /></td>
       </tr>
       <tr>
         <td class="fr-label">  <form:label path="email"><spring:message code="email"/>* : </form:label></td>
@@ -51,23 +51,23 @@
         <td class="fr-input">  <form:input path="deliveryAddress" required="required"/></td>
         <td class="fr-error">   <form:errors path="deliveryAddress" /></td>
       </tr>
-      <td class="fr-label"> <form:label path="phoneNumber"><spring:message code="phone_number"/> : </form:label></td>
-      <td class="fr-input"><form:input type="number" path="phoneNumber"/></td>
+      <td class="fr-label"> <form:label path="phoneNumber"><spring:message code="phone_number"/>* : </form:label></td>
+      <td class="fr-input"><form:input type="number" path="phoneNumber" required="required"/></td>
       <td class="fr-error">  <form:errors path="phoneNumber" /></td>
       </tr>
       <tr>
         <td class="fr-label"> <form:label path="sex"><spring:message code="gender"/> : </form:label></td>
         <td>
           <div>
-            <input type="radio" id="male" name="drone" value="male" checked>
+            <input type="radio" id="male" name="sex" value="male">
             <label for="male"><spring:message code="male"/></label>
           </div>
           <div>
-            <input type="radio" id="female" name="drone" value="female" checked>
+            <input type="radio" id="female" name="sex" value="female">
             <label for="female"><spring:message code="female"/></label>
           </div>
           <div>
-            <input type="radio" id="x" name="drone" value="x" checked>
+            <input type="radio" id="x" name="sex" value="" checked>
             <label for="x"><spring:message code="unspecified"/></label>
           </div>
         </td>
